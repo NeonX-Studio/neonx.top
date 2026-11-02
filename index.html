@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090a15">
+  <meta name="theme-color" content="#000211">
   <meta name="description" content="NeonX Studio，探索游戏与人工智能的未来。">
   <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="assets/brand/favicon/favicon.svg" type="image/svg+xml">
@@ -23,12 +23,12 @@
   <style>
     :root {
       color-scheme: dark;
-      --ink: #f3f5ff;
+      --ink: #fdfcfc;
       --soft: #b7c2d8;
-      --blue: #70e8ff;
-      --pink: #ff79c6;
+      --blue: #1afbfd;
+      --pink: #fc11c0;
       --line: rgba(192, 209, 240, .2);
-      --bg: #090a15;
+      --bg: #000211;
     }
     * { box-sizing: border-box; }
     html { min-height: 100%; }
@@ -51,7 +51,7 @@
       min-height: 100vh;
       min-height: 100svh;
       overflow: hidden;
-      background: #090a15;
+      background: #000211;
     }
     main { flex: 1; }
     .wrap { width: min(100% - 112px, 1536px); margin-inline: auto; }
@@ -176,7 +176,7 @@
     .visual-controls[hidden] { display: none; }
     .visual-caption { margin: 0 0 3px; color: #b8c5dc; font-size: 11px; line-height: 1.6; text-align: right; }
     .visual-caption strong { display: block; color: var(--ink); font-size: 10px; font-weight: 600; letter-spacing: .15em; }
-    .mode-switch { display: flex; padding: 3px; border: 1px solid rgba(164, 196, 224, .3); background: rgba(9, 10, 21, .88); }
+    .mode-switch { display: flex; padding: 3px; border: 1px solid rgba(164, 196, 224, .3); background: rgba(0, 2, 17, .88); }
     .mode-switch button {
       min-width: 62px;
       min-height: 38px;
@@ -267,9 +267,9 @@
       height: 250px;
       right: -40px;
       top: -90px;
-      border: 1px solid rgba(112, 232, 255, .3);
+      border: 1px solid rgba(26, 251, 253, .3);
       border-radius: 50%;
-      box-shadow: 0 0 0 35px rgba(112, 232, 255, .025), 0 0 0 70px rgba(255, 121, 198, .025);
+      box-shadow: 0 0 0 35px rgba(26, 251, 253, .025), 0 0 0 70px rgba(252, 17, 192, .025);
       pointer-events: none;
     }
     .empty-state > * { position: relative; z-index: 1; }
@@ -578,7 +578,7 @@
           const x = star.x * width, y = star.y * height;
           if (!mobile && x < width * .37) continue;
           const alpha = .35 + .25 * (Math.sin(elapsed * .001 + star.phase) + 1) / 2;
-          context.fillStyle = star.pink ? `rgba(255,121,198,${alpha})` : `rgba(160,226,255,${alpha})`;
+          context.fillStyle = star.pink ? `rgba(252,17,192,${alpha})` : `rgba(140,252,253,${alpha})`;
           context.beginPath();
           context.arc(x, y, star.size, 0, Math.PI * 2);
           context.fill();
@@ -587,18 +587,18 @@
         context.save();
         context.translate(cx, cy);
         context.rotate(-.30);
-        context.strokeStyle = `rgba(117, 228, 255, ${.18 - mix * .1})`;
+        context.strokeStyle = `rgba(26, 251, 253, ${.18 - mix * .1})`;
         context.lineWidth = 1;
         context.beginPath();
         context.ellipse(0, 0, radius * 1.38, radius * .55, 0, 0, Math.PI * 2);
         context.stroke();
-        context.strokeStyle = `rgba(255, 121, 198, ${.6 - mix * .25})`;
+        context.strokeStyle = `rgba(252, 17, 192, ${.6 - mix * .25})`;
         context.lineWidth = 1.3;
         context.beginPath();
         context.ellipse(0, 0, radius * 1.38, radius * .55, 0, .1, 1.55);
         context.stroke();
         context.rotate(.85);
-        context.strokeStyle = `rgba(151, 196, 255, ${.14 - mix * .07})`;
+        context.strokeStyle = `rgba(120, 210, 240, ${.14 - mix * .07})`;
         context.lineWidth = 1;
         context.beginPath();
         context.ellipse(0, 0, radius * 1.16, radius * .8, 0, 0, Math.PI * 2);
@@ -608,7 +608,7 @@
         for (const [i, j] of edges) {
           const a = projected[i], b = projected[j];
           const alpha = (.08 + ((a.depth + b.depth + 2) / 4) * .36) * (1 - mix * .92);
-          context.strokeStyle = `rgba(111, 218, 255, ${alpha})`;
+          context.strokeStyle = `rgba(26, 251, 253, ${alpha})`;
           context.lineWidth = .8;
           context.beginPath();
           context.moveTo(a.x, a.y);
@@ -620,7 +620,7 @@
             const progress = (elapsed * .00025 + i / 10) % 1;
             const edge = edges[(i * 43 + Math.floor(elapsed / 4000)) % edges.length];
             const a = projected[edge[0]], b = projected[edge[1]];
-            context.fillStyle = `rgba(255, 159, 213, ${(1 - mix) * .9})`;
+            context.fillStyle = `rgba(253, 110, 214, ${(1 - mix) * .9})`;
             context.beginPath();
             context.arc(a.x + (b.x - a.x) * progress, a.y + (b.y - a.y) * progress, 2.4, 0, Math.PI * 2);
             context.fill();
@@ -628,14 +628,14 @@
         }
         for (const p of projected) {
           const alpha = .3 + (p.depth + 1) * .33;
-          context.fillStyle = p.pink ? `rgba(255, 121, 198, ${alpha})` : `rgba(157, 233, 255, ${alpha})`;
+          context.fillStyle = p.pink ? `rgba(252, 17, 192, ${alpha})` : `rgba(118, 252, 253, ${alpha})`;
           context.beginPath();
           context.arc(p.x, p.y, (p.pink ? 2.2 : 1.3 + (p.depth + 1) * .35) + mix * .8, 0, Math.PI * 2);
           context.fill();
           if (pointer.active) {
             const distance = Math.hypot(p.x - pointer.x, p.y - pointer.y);
             if (distance < 135) {
-              context.strokeStyle = `rgba(255, 121, 198, ${(1 - distance / 135) * .7})`;
+              context.strokeStyle = `rgba(252, 17, 192, ${(1 - distance / 135) * .7})`;
               context.beginPath();
               context.moveTo(p.x, p.y);
               context.lineTo(pointer.x, pointer.y);
@@ -646,7 +646,7 @@
         for (const ripple of ripples) {
           const progress = ripple.age / 900;
           const fade = 1 - progress;
-          context.strokeStyle = `rgba(255, 121, 198, ${fade * .8})`;
+          context.strokeStyle = `rgba(252, 17, 192, ${fade * .8})`;
           context.lineWidth = 1;
           context.beginPath();
           context.arc(ripple.x, ripple.y, 8 + progress * 100, 0, Math.PI * 2);
@@ -654,7 +654,7 @@
           for (let i = 0; i < 12; i++) {
             const theta = i * Math.PI / 6 + ripple.offset;
             const distance = 10 + progress * (35 + (i % 3) * 18);
-            context.fillStyle = i % 2 ? `rgba(255, 121, 198, ${fade})` : `rgba(126, 233, 255, ${fade})`;
+            context.fillStyle = i % 2 ? `rgba(252, 17, 192, ${fade})` : `rgba(26, 251, 253, ${fade})`;
             context.beginPath();
             context.arc(ripple.x + Math.cos(theta) * distance, ripple.y + Math.sin(theta) * distance, 1.5 * fade, 0, Math.PI * 2);
             context.fill();
