@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a15">
+  <meta name="description" content="NeonX Studio，探索游戏与人工智能的未来。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23090a15'/%3E%3Cpath d='M4 16 16 4 28 16 16 28Z' fill='none' stroke='%2370e8ff'/%3E%3Cpath d='M11 11 21 21M21 11 11 21' stroke='%23ff79c6'/%3E%3C/svg%3E">
+  <title>NeonX Studio | 游戏与人工智能的未来</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f3f5ff;
+      --soft: #b7c2d8;
+      --blue: #70e8ff;
+      --pink: #ff79c6;
+      --line: rgba(192, 209, 240, .2);
+      --bg: #090a15;
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, a { font: inherit; }
+    :focus-visible { outline: 2px solid var(--blue); outline-offset: 6px; }
+    [data-page]:focus, [data-page] h1:focus { outline: none; }
+    [hidden] { display: none !important; }
+    .page {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      min-height: 100svh;
+      overflow: hidden;
+      background: #090a15;
+    }
+    main { flex: 1; }
+    .wrap { width: min(100% - 112px, 1536px); margin-inline: auto; }
+    .header {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 100px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .brand-symbol {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      transform: rotate(45deg);
+      border: 1px solid var(--blue);
+    }
+    .brand-symbol::before, .brand-symbol::after {
+      content: "";
+      position: absolute;
+      background: var(--blue);
+    }
+    .brand-symbol::before { width: 1px; height: 20px; left: 13px; top: 4px; }
+    .brand-symbol::after { height: 1px; width: 20px; top: 13px; left: 4px; }
+    .brand-word { font-size: 23px; font-weight: 750; letter-spacing: -.06em; }
+    .brand-word span { color: var(--pink); }
+    .header-right { display: flex; align-items: center; gap: 34px; }
+    .nav { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 36px); }
+    .nav a {
+      position: relative;
+      padding: 12px 0;
+      color: #b7c2d8;
+      font-size: 13px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color .2s ease;
+    }
+    .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
+    .nav a[aria-current="page"]::after { content: ""; position: absolute; bottom: 3px; left: 0; width: 18px; height: 2px; background: var(--pink); }
+    .header-action {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: .05em;
+      border-bottom: 1px solid var(--pink);
+      padding-bottom: 6px;
+    }
+    .header-action:hover { color: var(--pink); }
+    .hero {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      min-height: 570px;
+      isolation: isolate;
+    }
+    .network {
+      position: absolute;
+      z-index: -1;
+      inset: -1px 0 0;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 68% 50%, rgba(35, 44, 80, .35), transparent 49%);
+    }
+    .network canvas { width: 100%; height: 100%; display: block; }
+    .hero-inner { position: relative; z-index: 1; padding-block: 80px 100px; pointer-events: none; }
+    .hero-inner > * { pointer-events: auto; }
+    .hero h1 {
+      width: max-content;
+      max-width: 100%;
+      margin: 0;
+      font-size: clamp(56px, 6.7vw, 100px);
+      font-weight: 650;
+      line-height: 1.16;
+      letter-spacing: -.04em;
+      text-wrap: balance;
+    }
+    .hero h1 span { color: var(--blue); }
+    .hero h1 em { color: var(--pink); font-style: normal; }
+    .hero-copy {
+      margin: 30px 0 0;
+      max-width: 440px;
+      color: #c1ccdf;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 25px; margin-top: 40px; }
+    .connect {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 52px;
+      min-height: 56px;
+      padding: 0 18px 0 21px;
+      border: 0;
+      background: var(--blue);
+      color: #0a1620;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .03em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s ease, color .2s ease;
+    }
+    .connect:hover { background: var(--pink); color: #1d1020; }
+    .connect span { font-size: 20px; line-height: 1; font-weight: 400; }
+    .status { color: #bcc7d9; font-size: 12px; }
+    .status::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin-right: 9px;
+      border-radius: 50%;
+      background: var(--pink);
+      vertical-align: 2px;
+    }
+    .visual-controls {
+      position: absolute;
+      right: max(56px, calc((100% - 1536px) / 2));
+      bottom: 26px;
+      z-index: 2;
+      display: flex;
+      align-items: end;
+      gap: 20px;
+    }
+    .visual-controls[hidden] { display: none; }
+    .visual-caption { margin: 0 0 3px; color: #b8c5dc; font-size: 11px; line-height: 1.6; text-align: right; }
+    .visual-caption strong { display: block; color: var(--ink); font-size: 10px; font-weight: 600; letter-spacing: .15em; }
+    .mode-switch { display: flex; padding: 3px; border: 1px solid rgba(164, 196, 224, .3); background: rgba(9, 10, 21, .88); }
+    .mode-switch button {
+      min-width: 62px;
+      min-height: 38px;
+      border: 0;
+      background: transparent;
+      color: #c5d0e2;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background .25s ease, color .25s ease;
+    }
+    .mode-switch button:hover { color: white; }
+    .mode-switch button[aria-pressed="true"] { background: var(--blue); color: #0a1620; }
+    .about {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+      gap: 48px;
+      padding-block: 85px 90px;
+      border-top: 1px solid var(--line);
+    }
+    .about h2 { margin: 0; font-size: clamp(30px, 3.2vw, 46px); line-height: 1.3; letter-spacing: -.03em; font-weight: 600; }
+    .about h2 span { color: var(--pink); }
+    .about-copy { max-width: 540px; }
+    .about-copy p { margin: 0; color: #c2ccdd; font-size: 15px; line-height: 1.9; }
+    .about-copy p + p { margin-top: 18px; color: #9eacc2; font-size: 13px; }
+    .about-line { display: block; width: 50px; height: 2px; margin-bottom: 24px; background: var(--blue); }
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 24px;
+      padding-bottom: 8px;
+      color: var(--ink);
+      border-bottom: 1px solid var(--pink);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .text-link:hover { color: var(--blue); border-color: var(--blue); }
+    .screen { flex: 1; }
+    .subpage {
+      position: relative;
+      min-height: min(720px, 75vh);
+      padding-block: clamp(70px, 9vw, 140px) 100px;
+    }
+    .page-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, .7fr);
+      gap: 40px;
+      align-items: end;
+      padding-bottom: 55px;
+      border-bottom: 1px solid var(--line);
+    }
+    .page-heading h1 {
+      margin: 0;
+      max-width: 700px;
+      font-size: clamp(48px, 6vw, 84px);
+      font-weight: 650;
+      line-height: 1.15;
+      letter-spacing: -.04em;
+    }
+    .page-heading h1 span { color: var(--blue); }
+    .page-heading h1 em { color: var(--pink); font-style: normal; }
+    .page-heading p { max-width: 380px; margin: 0 0 6px; color: #c1ccdf; font-size: 15px; line-height: 1.9; }
+    .section-body { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(40px, 8vw, 140px); padding-top: 60px; }
+    .section-body h2 { margin: 0; font-size: clamp(26px, 3vw, 40px); line-height: 1.35; letter-spacing: -.03em; font-weight: 600; }
+    .section-body h2 span { color: var(--pink); }
+    .section-body p { margin: 0; max-width: 610px; color: #c1ccdf; font-size: 15px; line-height: 1.95; }
+    .section-body p + p { margin-top: 18px; }
+    .section-body .muted { color: #aab8cf; font-size: 13px; }
+    .empty-state {
+      position: relative;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 245px;
+      margin-top: 60px;
+      padding: clamp(25px, 4vw, 48px);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(120deg, #12182a, #101320);
+    }
+    .empty-state::after {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      right: -40px;
+      top: -90px;
+      border: 1px solid rgba(112, 232, 255, .3);
+      border-radius: 50%;
+      box-shadow: 0 0 0 35px rgba(112, 232, 255, .025), 0 0 0 70px rgba(255, 121, 198, .025);
+      pointer-events: none;
+    }
+    .empty-state > * { position: relative; z-index: 1; }
+    .empty-state h2 { margin: 0 0 12px; font-size: clamp(25px, 3vw, 38px); font-weight: 600; letter-spacing: -.03em; }
+    .empty-state p { margin: 0; max-width: 460px; color: #c1ccdf; font-size: 14px; line-height: 1.8; }
+    .empty-state .text-link { flex: none; }
+    .feature-list { margin-top: 48px; border-top: 1px solid var(--line); }
+    .feature-list div { display: grid; grid-template-columns: 140px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .feature-list dt { color: var(--blue); font-size: 13px; }
+    .feature-list dd { margin: 0; color: #c1ccdf; font-size: 14px; line-height: 1.8; }
+    .contact-state { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; color: #f0cee5; font-size: 13px; }
+    .contact-state::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--pink); }
+    .js-ready .screen:not([hidden]) { animation: page-in .32s ease-out both; }
+    @keyframes page-in { from { opacity: .7; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .footer {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 79px;
+      border-top: 1px solid var(--line);
+      color: #afbdd4;
+      font-size: 11px;
+      letter-spacing: .08em;
+    }
+    .footer-title { color: #e4e9f5; font-weight: 600; letter-spacing: .12em; }
+    .footer-title span { color: var(--pink); }
+    @media (max-width: 900px) {
+      .wrap { width: calc(100% - 64px); }
+      .hero h1 { font-size: clamp(52px, 7.5vw, 70px); }
+      .visual-controls { right: 32px; }
+      .header-right { gap: 20px; }
+      .nav { gap: 18px; }
+    }
+    @media (max-width: 760px) {
+      .wrap { width: calc(100% - 40px); }
+      .header { min-height: 0; padding-top: 20px; flex-wrap: wrap; column-gap: 12px; }
+      .brand-word { font-size: 21px; }
+      .brand-symbol { width: 26px; height: 26px; }
+      .brand-symbol::before { height: 16px; left: 11px; }
+      .brand-symbol::after { width: 16px; top: 11px; }
+      .header-right { display: contents; }
+      .header-action { margin-left: auto; }
+      .nav { order: 2; width: 100%; justify-content: space-between; gap: 8px; padding-top: 13px; }
+      .nav a { font-size: 12px; }
+      .hero { display: block; min-height: 840px; }
+      .hero-inner { padding-block: 70px 0; }
+      .hero h1 { font-size: clamp(45px, 11vw, 68px); }
+      .hero-copy { max-width: 320px; margin-top: 22px; font-size: 14px; }
+      .hero-actions { margin-top: 25px; gap: 17px; }
+      .connect { min-height: 52px; gap: 30px; }
+      .network { top: 330px; bottom: 0; background: radial-gradient(ellipse at 50% 57%, rgba(35, 44, 80, .35), transparent 62%); }
+      .visual-controls { left: 20px; right: 20px; bottom: 24px; justify-content: space-between; gap: 10px; }
+      .visual-caption { text-align: left; }
+      .about { grid-template-columns: 1fr; gap: 25px; padding-block: 60px; }
+      .subpage { min-height: 70vh; padding-block: 60px 75px; }
+      .page-heading, .section-body { grid-template-columns: 1fr; gap: 24px; }
+      .page-heading { padding-bottom: 35px; }
+      .section-body { padding-top: 40px; }
+      .empty-state { min-height: 260px; margin-top: 40px; align-items: start; flex-direction: column; justify-content: end; }
+      .feature-list div { grid-template-columns: 90px 1fr; }
+      .footer { min-height: 72px; font-size: 10px; }
+    }
+    @media (max-width: 360px) {
+      .status { width: 100%; }
+      .hero { min-height: 880px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header wrap">
+      <a class="brand" href="#home" aria-label="NeonX Studio 首页">
+        <span class="brand-symbol" aria-hidden="true"></span>
+        <span class="brand-word">NEON<span>X</span></span>
+      </a>
+      <div class="header-right">
+        <nav class="nav" aria-label="主导航">
+          <a href="#home">首页</a>
+          <a href="#works">作品</a>
+          <a href="#studio">工作室</a>
+          <a href="#news">动态</a>
+          <a href="#contact">联系</a>
+        </nav>
+        <a class="header-action" href="#contact">与我们连接 ↗</a>
+      </div>
+    </header>
+
+    <main id="main-content">
+    <div class="screen" id="home" data-page aria-label="首页">
+    <section class="hero">
+      <div class="network" aria-hidden="true"><canvas id="network"></canvas></div>
+      <div class="hero-inner wrap">
+        <h1 tabindex="-1">游戏与<br><span>人工智能</span>的<br><em>未来。</em></h1>
+        <p class="hero-copy">NeonX Studio 正在构建中。<br>期待与你一起连接游戏与人工智能的世界。</p>
+        <div class="hero-actions">
+          <a class="connect" href="#contact">与我们连接 <span aria-hidden="true">↗</span></a>
+          <span class="status">官网建设中 · 部署就绪</span>
+        </div>
+      </div>
+      <div class="visual-controls" hidden>
+        <p class="visual-caption"><strong>INTERACTIVE FIELD</strong>移动或点击，探索视觉互动</p>
+        <div class="mode-switch" role="group" aria-label="视觉模式">
+          <button type="button" data-mode="network" aria-pressed="true">网络</button>
+          <button type="button" data-mode="particles" aria-pressed="false">粒子</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="about wrap" aria-labelledby="about-title">
+      <h2 id="about-title">游戏 × AI<br><span>在这里相遇。</span></h2>
+      <div class="about-copy">
+        <span class="about-line" aria-hidden="true"></span>
+        <p>NeonX Studio 关注游戏与人工智能的交汇，期待与你一起探索更多可能。</p>
+        <p>官网正在建设中，更多内容敬请期待。</p>
+        <a class="text-link" href="#studio">认识 NeonX <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+    </div>
+
+    <section class="screen subpage wrap" id="works" data-page aria-labelledby="works-title">
+      <div class="page-heading">
+        <h1 id="works-title" tabindex="-1">为想象<br><span>创造空间</span><em>。</em></h1>
+        <p>探索 NeonX Studio 的游戏与 AI 作品。这里将展示工作室的项目和创作进展。</p>
+      </div>
+      <div class="empty-state">
+        <div>
+          <h2>作品内容待添加</h2>
+          <p>这里预留了项目展示空间，作品信息将在完善后呈现。</p>
+        </div>
+        <a class="text-link" href="#news">查看工作室动态 <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="screen subpage wrap" id="studio" data-page aria-labelledby="studio-title">
+      <div class="page-heading">
+        <h1 id="studio-title" tabindex="-1">关于<br><span>NeonX</span><em>。</em></h1>
+        <p>一个关注游戏与人工智能交汇的工作室。我们相信，创意与技术的相遇能带来新的可能。</p>
+      </div>
+      <div class="section-body">
+        <h2>从想象出发，<br><span>向未来探索。</span></h2>
+        <div>
+          <p>NeonX Studio 正在建设中。我们期待探索游戏与人工智能如何相互启发，并将想法变成值得体验的作品。</p>
+          <dl class="feature-list">
+            <div><dt>游戏</dt><dd>探索互动体验与创意表达。</dd></div>
+            <div><dt>人工智能</dt><dd>关注技术与创造力之间的新连接。</dd></div>
+          </dl>
+          <a class="text-link" href="#works">探索作品 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen subpage wrap" id="news" data-page aria-labelledby="news-title">
+      <div class="page-heading">
+        <h1 id="news-title" tabindex="-1">最新<br><span>动态</span><em>。</em></h1>
+        <p>关注 NeonX 的创作进展、项目消息和工作室更新。</p>
+      </div>
+      <div class="empty-state">
+        <div>
+          <h2>动态内容待添加</h2>
+          <p>这里预留了工作室动态空间，后续可在此发布消息。</p>
+        </div>
+        <a class="text-link" href="#studio">了解工作室 <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="screen subpage wrap" id="contact" data-page aria-labelledby="contact-title">
+      <div class="page-heading">
+        <h1 id="contact-title" tabindex="-1">让我们<br><span>连接</span><em>。</em></h1>
+        <p>无论是创意交流还是未来合作，NeonX Studio 期待与你相遇。</p>
+      </div>
+      <div class="section-body">
+        <h2>一起探索<br><span>新的可能。</span></h2>
+        <div>
+          <p>官网正在建设中，此页面的联系信息尚未配置。</p>
+          <div class="contact-state">联系方式待添加</div><br>
+          <a class="text-link" href="#news">查看最新动态 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+    </main>
+
+    <footer class="footer wrap">
+      <span class="footer-title">NEON<span>X</span> / STUDIO</span>
+      <span>GAME × AI</span>
+      <span>© NeonX Studio</span>
+    </footer>
+  </div>
+
+  <script>
+    (() => {
+      const pages = Array.from(document.querySelectorAll('[data-page]'));
+      const pageIds = new Set(pages.map(page => page.id));
+      const navLinks = document.querySelectorAll('.nav a');
+
+      function showPage(focusHeading = false) {
+        const requested = location.hash.slice(1);
+        const current = pageIds.has(requested) ? requested : 'home';
+        for (const page of pages) page.hidden = page.id !== current;
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${current}`) link.setAttribute('aria-current', 'page');
+          else link.removeAttribute('aria-current');
+        });
+        const activePage = document.getElementById(current);
+        const heading = activePage.querySelector('h1');
+        document.title = current === 'home' ? 'NeonX Studio | 游戏与人工智能的未来' : `${heading.textContent.replace(/\s+/g, '')} | NeonX Studio`;
+        window.dispatchEvent(new CustomEvent('neonx:route', { detail: { current } }));
+        window.scrollTo(0, 0);
+        if (focusHeading) heading.focus({ preventScroll: true });
+      }
+
+      document.addEventListener('click', event => {
+        const link = event.target.closest('a[href^="#"]');
+        if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const id = link.getAttribute('href').slice(1);
+        if (!pageIds.has(id)) return;
+        event.preventDefault();
+        if (location.hash !== `#${id}`) history.pushState(null, '', `#${id}`);
+        showPage(true);
+      });
+      window.addEventListener('popstate', () => showPage(true));
+      window.addEventListener('hashchange', () => showPage(true));
+      document.documentElement.classList.add('js-ready');
+      showPage();
+
+      const canvas = document.querySelector('#network');
+      const context = canvas.getContext('2d');
+      if (!context) return;
+      const motion = matchMedia('(prefers-reduced-motion: reduce)');
+      const network = canvas.parentElement;
+      const pointer = { x: 0, y: 0, active: false };
+      const controls = document.querySelector('.visual-controls');
+      const modeButtons = controls.querySelectorAll('[data-mode]');
+      const caption = controls.querySelector('.visual-caption');
+      const points = [];
+      const edges = [];
+      const stars = [];
+      const ripples = [];
+      const total = 170;
+      const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+      let width = 0, height = 0, frame = 0, lastTime = 0, angle = .35;
+      let elapsed = 0, mix = 0, targetMix = 0, inView = !document.getElementById('home').hidden;
+
+      for (let i = 0; i < total; i++) {
+        const y = 1 - (i / (total - 1)) * 2;
+        const ring = Math.sqrt(1 - y * y);
+        const theta = goldenAngle * i;
+        const cloudRadius = Math.sqrt((i + .5) / total);
+        const cloudAngle = theta * 1.8 + cloudRadius * 5;
+        points.push({
+          x: Math.cos(theta) * ring, y, z: Math.sin(theta) * ring,
+          cloudX: Math.cos(cloudAngle) * cloudRadius * 1.35,
+          cloudY: Math.sin(cloudAngle) * cloudRadius * .78,
+          cloudZ: Math.sin(theta * .6) * .35,
+          pink: i % 9 === 0
+        });
+      }
+      for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
+          const a = points[i], b = points[j];
+          if (Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z) < .36) edges.push([i, j]);
+        }
+      }
+      for (let i = 0; i < 75; i++) {
+        stars.push({ x: Math.random(), y: Math.random(), size: Math.random() * 1.2 + .3, pink: i % 5 === 0, phase: Math.random() * Math.PI * 2 });
+      }
+
+      function resize() {
+        const rect = network.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        width = rect.width;
+        height = rect.height;
+        const ratio = Math.min(devicePixelRatio || 1, 2);
+        canvas.width = Math.round(width * ratio);
+        canvas.height = Math.round(height * ratio);
+        context.setTransform(ratio, 0, 0, ratio, 0, 0);
+        draw();
+      }
+
+      function draw() {
+        context.clearRect(0, 0, width, height);
+        const mobile = width <= 760;
+        const cx = width * (mobile ? .53 : .72);
+        const cy = height * (mobile ? .46 : .49);
+        const radius = Math.min(width * (mobile ? .40 : .25), height * .38, 315);
+        const tilt = -.19 + (pointer.active ? (pointer.y / height - .5) * .14 : 0);
+        const turn = angle + (pointer.active ? (pointer.x / width - .5) * .55 : 0);
+        const sin = Math.sin(turn), cos = Math.cos(turn);
+        const sinT = Math.sin(tilt), cosT = Math.cos(tilt);
+        const projected = points.map(p => {
+          const px = p.x + (p.cloudX - p.x) * mix;
+          const py = p.y + (p.cloudY - p.y) * mix;
+          const pz = p.z + (p.cloudZ - p.z) * mix;
+          const x = px * cos - pz * sin;
+          const z = px * sin + pz * cos;
+          const y = py * cosT - z * sinT;
+          const depth = py * sinT + z * cosT;
+          return { x: cx + x * radius, y: cy + y * radius, depth, pink: p.pink };
+        });
+
+        for (const star of stars) {
+          const x = star.x * width, y = star.y * height;
+          if (!mobile && x < width * .37) continue;
+          const alpha = .35 + .25 * (Math.sin(elapsed * .001 + star.phase) + 1) / 2;
+          context.fillStyle = star.pink ? `rgba(255,121,198,${alpha})` : `rgba(160,226,255,${alpha})`;
+          context.beginPath();
+          context.arc(x, y, star.size, 0, Math.PI * 2);
+          context.fill();
+        }
+
+        context.save();
+        context.translate(cx, cy);
+        context.rotate(-.30);
+        context.strokeStyle = `rgba(117, 228, 255, ${.18 - mix * .1})`;
+        context.lineWidth = 1;
+        context.beginPath();
+        context.ellipse(0, 0, radius * 1.38, radius * .55, 0, 0, Math.PI * 2);
+        context.stroke();
+        context.strokeStyle = `rgba(255, 121, 198, ${.6 - mix * .25})`;
+        context.lineWidth = 1.3;
+        context.beginPath();
+        context.ellipse(0, 0, radius * 1.38, radius * .55, 0, .1, 1.55);
+        context.stroke();
+        context.rotate(.85);
+        context.strokeStyle = `rgba(151, 196, 255, ${.14 - mix * .07})`;
+        context.lineWidth = 1;
+        context.beginPath();
+        context.ellipse(0, 0, radius * 1.16, radius * .8, 0, 0, Math.PI * 2);
+        context.stroke();
+        context.restore();
+
+        for (const [i, j] of edges) {
+          const a = projected[i], b = projected[j];
+          const alpha = (.08 + ((a.depth + b.depth + 2) / 4) * .36) * (1 - mix * .92);
+          context.strokeStyle = `rgba(111, 218, 255, ${alpha})`;
+          context.lineWidth = .8;
+          context.beginPath();
+          context.moveTo(a.x, a.y);
+          context.lineTo(b.x, b.y);
+          context.stroke();
+        }
+        if (mix < .98) {
+          for (let i = 0; i < 10; i++) {
+            const progress = (elapsed * .00025 + i / 10) % 1;
+            const edge = edges[(i * 43 + Math.floor(elapsed / 4000)) % edges.length];
+            const a = projected[edge[0]], b = projected[edge[1]];
+            context.fillStyle = `rgba(255, 159, 213, ${(1 - mix) * .9})`;
+            context.beginPath();
+            context.arc(a.x + (b.x - a.x) * progress, a.y + (b.y - a.y) * progress, 2.4, 0, Math.PI * 2);
+            context.fill();
+          }
+        }
+        for (const p of projected) {
+          const alpha = .3 + (p.depth + 1) * .33;
+          context.fillStyle = p.pink ? `rgba(255, 121, 198, ${alpha})` : `rgba(157, 233, 255, ${alpha})`;
+          context.beginPath();
+          context.arc(p.x, p.y, (p.pink ? 2.2 : 1.3 + (p.depth + 1) * .35) + mix * .8, 0, Math.PI * 2);
+          context.fill();
+          if (pointer.active) {
+            const distance = Math.hypot(p.x - pointer.x, p.y - pointer.y);
+            if (distance < 135) {
+              context.strokeStyle = `rgba(255, 121, 198, ${(1 - distance / 135) * .7})`;
+              context.beginPath();
+              context.moveTo(p.x, p.y);
+              context.lineTo(pointer.x, pointer.y);
+              context.stroke();
+            }
+          }
+        }
+        for (const ripple of ripples) {
+          const progress = ripple.age / 900;
+          const fade = 1 - progress;
+          context.strokeStyle = `rgba(255, 121, 198, ${fade * .8})`;
+          context.lineWidth = 1;
+          context.beginPath();
+          context.arc(ripple.x, ripple.y, 8 + progress * 100, 0, Math.PI * 2);
+          context.stroke();
+          for (let i = 0; i < 12; i++) {
+            const theta = i * Math.PI / 6 + ripple.offset;
+            const distance = 10 + progress * (35 + (i % 3) * 18);
+            context.fillStyle = i % 2 ? `rgba(255, 121, 198, ${fade})` : `rgba(126, 233, 255, ${fade})`;
+            context.beginPath();
+            context.arc(ripple.x + Math.cos(theta) * distance, ripple.y + Math.sin(theta) * distance, 1.5 * fade, 0, Math.PI * 2);
+            context.fill();
+          }
+        }
+      }
+
+      function tick(time) {
+        const delta = lastTime ? Math.min(time - lastTime, 50) : 0;
+        angle += delta * .00012;
+        elapsed += delta;
+        mix += (targetMix - mix) * (1 - Math.exp(-delta / 220));
+        for (const ripple of ripples) ripple.age += delta;
+        while (ripples.length && ripples[0].age >= 900) ripples.shift();
+        lastTime = time;
+        draw();
+        frame = requestAnimationFrame(tick);
+      }
+      function updateAnimation() {
+        cancelAnimationFrame(frame);
+        frame = 0;
+        lastTime = 0;
+        if (!motion.matches && !document.hidden && inView) frame = requestAnimationFrame(tick);
+        else {
+          if (motion.matches) { mix = targetMix; pointer.active = false; ripples.length = 0; }
+          draw();
+        }
+        caption.innerHTML = motion.matches
+          ? '<strong>INTERACTIVE FIELD</strong>选择视觉模式'
+          : '<strong>INTERACTIVE FIELD</strong>移动或点击，探索视觉互动';
+      }
+      modeButtons.forEach(modeButton => modeButton.addEventListener('click', () => {
+        targetMix = modeButton.dataset.mode === 'particles' ? 1 : 0;
+        modeButtons.forEach(item => item.setAttribute('aria-pressed', String(item === modeButton)));
+        if (motion.matches) { mix = targetMix; draw(); }
+      }));
+      document.querySelector('.hero').addEventListener('click', event => {
+        if (motion.matches || event.target.closest('button, a')) return;
+        const rect = network.getBoundingClientRect();
+        const x = event.clientX - rect.left, y = event.clientY - rect.top;
+        if (x < 0 || x > width || y < 0 || y > height) return;
+        ripples.push({ x, y, age: 0, offset: Math.random() * Math.PI });
+        if (ripples.length > 4) ripples.shift();
+      });
+      document.addEventListener('pointermove', event => {
+        if (motion.matches || document.getElementById('home').hidden) return;
+        const rect = network.getBoundingClientRect();
+        pointer.x = event.clientX - rect.left;
+        pointer.y = event.clientY - rect.top;
+        pointer.active = pointer.x >= 0 && pointer.x <= width && pointer.y >= 0 && pointer.y <= height;
+      });
+      document.addEventListener('pointerout', event => { if (!event.relatedTarget) pointer.active = false; });
+      document.addEventListener('pointercancel', () => { pointer.active = false; });
+      window.addEventListener('resize', resize);
+      window.addEventListener('neonx:route', event => {
+        inView = event.detail.current === 'home';
+        pointer.active = false;
+        if (inView) resize();
+        updateAnimation();
+      });
+      document.addEventListener('visibilitychange', updateAnimation);
+      motion.addEventListener('change', updateAnimation);
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(entries => {
+          inView = entries[0].isIntersecting;
+          updateAnimation();
+        }).observe(network);
+      }
+      controls.hidden = false;
+      resize();
+      updateAnimation();
+    })();
+  </script>
+</body>
+</html>
