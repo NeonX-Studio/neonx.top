@@ -5,7 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090a15">
   <meta name="description" content="NeonX Studio，探索游戏与人工智能的未来。">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23090a15'/%3E%3Cpath d='M4 16 16 4 28 16 16 28Z' fill='none' stroke='%2370e8ff'/%3E%3Cpath d='M11 11 21 21M21 11 11 21' stroke='%23ff79c6'/%3E%3C/svg%3E">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="assets/brand/favicon/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/brand/favicon/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NeonX Studio">
+<meta property="og:title" content="NeonX Studio | ??????????">
+<meta property="og:description" content="NeonX Studio??????????????">
+<meta property="og:url" content="https://neonx.top/">
+<meta property="og:image" content="https://neonx.top/assets/brand/png/neonx-social-1280x640.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://neonx.top/assets/brand/png/neonx-social-1280x640.png">
   <title>NeonX Studio | 游戏与人工智能的未来</title>
   <style>
     :root {
@@ -59,22 +72,8 @@
       color: var(--ink);
       text-decoration: none;
     }
-    .brand-symbol {
-      position: relative;
-      width: 30px;
-      height: 30px;
-      transform: rotate(45deg);
-      border: 1px solid var(--blue);
-    }
-    .brand-symbol::before, .brand-symbol::after {
-      content: "";
-      position: absolute;
-      background: var(--blue);
-    }
-    .brand-symbol::before { width: 1px; height: 20px; left: 13px; top: 4px; }
-    .brand-symbol::after { height: 1px; width: 20px; top: 13px; left: 4px; }
-    .brand-word { font-size: 23px; font-weight: 750; letter-spacing: -.06em; }
-    .brand-word span { color: var(--pink); }
+    .brand-mark { display: block; width: 40px; height: auto; }
+    .brand-word { display: block; width: auto; height: 17px; }
     .header-right { display: flex; align-items: center; gap: 34px; }
     .nav { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 36px); }
     .nav a {
@@ -310,10 +309,9 @@
     @media (max-width: 760px) {
       .wrap { width: calc(100% - 40px); }
       .header { min-height: 0; padding-top: 20px; flex-wrap: wrap; column-gap: 12px; }
-      .brand-word { font-size: 21px; }
-      .brand-symbol { width: 26px; height: 26px; }
-      .brand-symbol::before { height: 16px; left: 11px; }
-      .brand-symbol::after { width: 16px; top: 11px; }
+      .brand { gap: 11px; }
+      .brand-mark { width: 34px; }
+      .brand-word { height: 14px; }
       .header-right { display: contents; }
       .header-action { margin-left: auto; }
       .nav { order: 2; width: 100%; justify-content: space-between; gap: 8px; padding-top: 13px; }
@@ -349,8 +347,8 @@
   <div class="page">
     <header class="header wrap">
       <a class="brand" href="#home" aria-label="NeonX Studio 首页">
-        <span class="brand-symbol" aria-hidden="true"></span>
-        <span class="brand-word">NEON<span>X</span></span>
+        <img class="brand-mark" src="assets/brand/web/neonx-mark.svg" alt="" width="684" height="643">
+        <img class="brand-word" src="assets/brand/web/neonx-wordtype.svg" alt="" width="806" height="80">
       </a>
       <div class="header-right">
         <nav class="nav" aria-label="主导航">

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500"><title>NeonX Studio</title><defs>
+    <linearGradient id="seam" x1="0" y1="686" x2="0" y2="704" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FC11C0"/>
+      <stop offset="1" stop-color="#1AFBFD"/>
+    </linearGradient>
+  <filter id="glow" filterUnits="userSpaceOnUse" x="0" y="0" width="1500" height="500"><feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b1"/><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b2"/><feMerge><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge></filter><radialGradient id="bgg" cx="50%" cy="48%" r="50%"><stop offset="0" stop-color="#0B1236"/><stop offset="1" stop-color="#000211"/></radialGradient></defs><rect width="1500" height="500" rx="0" fill="url(#bgg)"/><g filter="url(#glow)"><g transform="translate(285.00 113.52) scale(0.64990)"><g transform="translate(0.00 0.00) scale(0.65319) translate(-285 -161)">
+    <g fill="#FC11C0">
+      <path d="M640 161V358H650.3V232.4L779 358H838.6Z"/>
+      <path d="M872.8 390.3L968.9 483.7L866.6 581.8H856.6L847.4 572.7L936.7 482.3L859.9 403.8Z"/>
+      <path d="M778 599.2L649.5 729.5V629.4L640 641V802.1L845.5 599.2Z"/>
+      <path d="M791 377L728.2 449L699.7 480.6L607 581.4V692.6H616.2V636.7L728 511.6L756.5 480L856.4 377Z"/>
+    </g>
+    <g fill="#1AFBFD">
+      <path d="M613.8 161.7L285 483.5L391 584.8H404V568.9L317.5 481.8L403.7 393.6L405.1 377.2L417.9 360H469.5L607 231.5V358.2H613.8Z"/>
+      <path d="M408.8 599.2L616.1 803.6V697H606.5V730.9L474.6 599.2Z"/>
+      <path d="M425 379.2H450.5L576 503.7V369L617.2 412.1V546.6L590.9 578.5L466.8 455.1V580.5H425Z"/>
+      <path d="M664.9 377.8L627.3 379.6Q617.6 380.6 615 387.1L791.8 581.8H856.1L756.1 480.5Z"/>
+    </g>
+    <rect x="606.6" y="686" width="9.6" height="18" fill="url(#seam)"/>
+  </g><g transform="translate(536.78 121.80) scale(1.10943) translate(-223 -876)"><g fill="#FDFCFC"><path d="M223.8 876.8H243.6L339 939.6V876.8H354.6V955.9H336.6L239.6 893.4V955.9H223.8Z"/>
+    <path d="M412 876.8H523V892.7H412ZM412 908.5H515.9V924.1H412ZM412 940.1H523V955.9H412Z"/>
+    <path fill-rule="evenodd" d="M595.3 876.8H673.8A18 18 0 0 1 691.8 894.8V937.9A18 18 0 0 1 673.8 955.9H595.3A18 18 0 0 1 577.3 937.9V894.8A18 18 0 0 1 595.3 876.8ZM597.7 892.7A5 5 0 0 0 592.7 897.7V935.1A5 5 0 0 0 597.7 940.1H671.6A5 5 0 0 0 676.6 935.1V897.7A5 5 0 0 0 671.6 892.7Z"/>
+    <path d="M749 876.8H768.2L854.7 939V876.8H870.3V955.9H852.5L764.4 893.4V955.9H749Z"/>
+    <path fill="#FC11C0" d="M910.5 876.8L956.5 916.4L910.5 955.9H936.5L969.5 927.4L1002.5 955.9H1028.5L982.5 916.4L1028.5 876.8H1002.5L969.5 905.9L936.5 876.8Z"/><rect x="224.1" y="1018.1" width="130.3" height="4.3"/>
+    <rect x="909" y="1018.1" width="119.9" height="4.3"/><g fill="none" stroke="#FDFCFC" stroke-width="4.7" stroke-linejoin="round">
+      <path d="M439.2 1014.1V1009.05H415.6V1020.7H439V1032.3H415.6V1027.2"/>
+      <path stroke-width="4.9" d="M581.2 1006.8V1032.35H604.4V1006.8"/>
+    </g>
+    <path d="M496.1 1006.7H523.4V1011.3H512.35V1034.5H507.55V1011.3H496.1Z"/>
+    <path fill-rule="evenodd" d="M663.85 1006.8H686.8A5 5 0 0 1 691.8 1011.8V1029.7A5 5 0 0 1 686.8 1034.7H663.85ZM668.7 1011.3V1029.9H687.25V1011.3Z"/>
+    <rect x="749" y="1006.9" width="4.9" height="27.6"/>
+    <path fill-rule="evenodd" d="M815.3 1006.75H835.8A4.2 4.2 0 0 1 840.05 1010.95V1030.6A4.2 4.2 0 0 1 835.8 1034.8H815.3A4.2 4.2 0 0 1 811.1 1030.6V1010.95A4.2 4.2 0 0 1 815.3 1006.75ZM816.05 1011.3V1029.9H835.15V1011.3Z"/></g></g></g></g></svg>

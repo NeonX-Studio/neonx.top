@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="684" height="643" viewBox="0 0 684 643"><title>NeonX Studio</title><defs>
+    <linearGradient id="seam" x1="0" y1="686" x2="0" y2="704" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FC11C0"/>
+      <stop offset="1" stop-color="#1AFBFD"/>
+    </linearGradient>
+  </defs><g transform="translate(0.00 0.00) scale(1.00000) translate(-285 -161)">
+    <g fill="#FC11C0">
+      <path d="M640 161V358H650.3V232.4L779 358H838.6Z"/>
+      <path d="M872.8 390.3L968.9 483.7L866.6 581.8H856.6L847.4 572.7L936.7 482.3L859.9 403.8Z"/>
+      <path d="M778 599.2L649.5 729.5V629.4L640 641V802.1L845.5 599.2Z"/>
+      <path d="M791 377L728.2 449L699.7 480.6L607 581.4V692.6H616.2V636.7L728 511.6L756.5 480L856.4 377Z"/>
+    </g>
+    <g fill="#1AFBFD">
+      <path d="M613.8 161.7L285 483.5L391 584.8H404V568.9L317.5 481.8L403.7 393.6L405.1 377.2L417.9 360H469.5L607 231.5V358.2H613.8Z"/>
+      <path d="M408.8 599.2L616.1 803.6V697H606.5V730.9L474.6 599.2Z"/>
+      <path d="M425 379.2H450.5L576 503.7V369L617.2 412.1V546.6L590.9 578.5L466.8 455.1V580.5H425Z"/>
+      <path d="M664.9 377.8L627.3 379.6Q617.6 380.6 615 387.1L791.8 581.8H856.1L756.1 480.5Z"/>
+    </g>
+    <rect x="606.6" y="686" width="9.6" height="18" fill="url(#seam)"/>
+  </g></svg>
