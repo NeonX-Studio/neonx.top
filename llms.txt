@@ -2,10 +2,10 @@
 
 NeonX Studio is a creative studio exploring the intersection of games and artificial intelligence through technology, interactive experiences, and imagination.
 
-- Website: https://neonx.top/
-- Projects: https://neonx.top/projects.html
-- Light project: https://neonx.top/light.html
-- GitHub: https://github.com/NeonX-Studio
+- Home page: https://neonx.top/
+- Projects index: https://neonx.top/projects.html
+- Light project page: https://neonx.top/light.html
+- GitHub organization: https://github.com/NeonX-Studio
 
 ## Public project
 
