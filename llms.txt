@@ -3,4 +3,13 @@
 NeonX Studio is a creative studio exploring the intersection of games and artificial intelligence through technology, interactive experiences, and imagination.
 
 - Website: https://neonx.top/
+- Projects: https://neonx.top/projects.html
+- Light project: https://neonx.top/light.html
 - GitHub: https://github.com/NeonX-Studio
+
+## Public project
+
+- **Light** is an AI-native systemic narrative RPG prototype set in Light City, a three-layer underground civilization built after a surface catastrophe.
+- The project uses a bounded AI reasoning layer for context-aware dialogue, tasks, and event proposals while gameplay rules, permissions, world state, and persistence remain authoritative.
+- Publicly stated technology direction: Unreal Engine 5.8.3 and C++.
+- The Light source repository, production assets, internal data, prompts, and development tools remain private.
