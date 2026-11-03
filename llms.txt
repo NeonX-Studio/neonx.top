@@ -1,10 +1,14 @@
 # NeonX Studio
 
-NeonX Studio is a creative studio exploring the intersection of games and artificial intelligence through technology, interactive experiences, and imagination.
+NeonX Studio is an independent creative studio at the intersection of games and artificial intelligence. It explores original interactive experiences, authored worlds, systemic storytelling, and bounded AI systems.
 
-- Home page: https://neonx.top/
-- Projects index: https://neonx.top/projects.html
-- Light project page: https://neonx.top/light.html
+- Home: https://neonx.top/
+- About: https://neonx.top/about.html
+- Projects: https://neonx.top/projects.html
+- Light: https://neonx.top/light.html
+- Journal: https://neonx.top/journal.html
+- Contact: https://neonx.top/contact.html
+- Public email: neon_x_studio@163.com
 - GitHub organization: https://github.com/NeonX-Studio
 
 ## Public project
@@ -13,3 +17,7 @@ NeonX Studio is a creative studio exploring the intersection of games and artifi
 - The project uses a bounded AI reasoning layer for context-aware dialogue, tasks, and event proposals while gameplay rules, permissions, world state, and persistence remain authoritative.
 - Publicly stated technology direction: Unreal Engine 5.8.3 and C++.
 - The Light source repository, production assets, internal data, prompts, and development tools remain private.
+
+## Editorial boundaries
+
+The site publishes confirmed studio positioning and public project direction. It does not claim a founding date, location, team size, clients, awards, social accounts, or project promises without confirmation.
