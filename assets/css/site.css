@@ -37,6 +37,8 @@ main { flex: 1; }
 .hero-inner > * { pointer-events: auto; }
 .hero h1 { width: max-content; max-width: 100%; margin: 0; font-size: clamp(58px, 7vw, 108px); font-weight: 650; line-height: 1.14; letter-spacing: -.04em; text-wrap: balance; }
 .hero h1 span, .page-heading h1 span, .section-body h2 span, .about h2 span { color: var(--blue); }
+.hero h1 .hero-accent-ai { color: var(--blue); }
+.hero h1 .hero-accent-games { color: var(--pink); }
 .hero h1 em, .page-heading h1 em { color: var(--pink); font-style: normal; }
 .hero-copy { margin: 32px 0 0; max-width: 470px; color: #c1ccdf; font-size: 16px; line-height: 1.9; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 26px; margin-top: 42px; }

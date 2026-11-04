@@ -16,7 +16,7 @@
     const heading = activePage?.querySelector('h1');
     if (heading) {
       document.title = current === 'home'
-        ? 'NeonX Studio | 游戏与人工智能创意工作室'
+        ? 'NeonX Studio | Shape the Future of AI and Games'
         : `${heading.textContent.replace(/\s+/g, '')} | NeonX Studio`;
       if (focusHeading) heading.focus({ preventScroll: true });
     }
