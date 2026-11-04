@@ -86,7 +86,7 @@
     cancelAnimationFrame(frame); frame = 0; lastTime = 0;
     if (!motion.matches && !document.hidden && inView) frame = requestAnimationFrame(tick);
     else { if (motion.matches) { mix = targetMix; resetPointer(); ripples.length = 0; } draw(); }
-    controls.querySelector('.visual-caption').innerHTML = motion.matches ? '<strong>INTERACTIVE FIELD</strong>选择视觉模式' : '<strong>INTERACTIVE FIELD</strong>移动或点击，探索视觉互动';
+    controls.querySelector('.visual-caption').innerHTML = motion.matches ? '<strong>INTERACTIVE FIELD</strong>Choose a visual mode' : '<strong>INTERACTIVE FIELD</strong>Move or click to explore';
   }
   controls.querySelectorAll('[data-mode]').forEach((button) => button.addEventListener('click', () => { targetMix = button.dataset.mode === 'particles' ? 1 : 0; controls.querySelectorAll('[data-mode]').forEach((item) => item.setAttribute('aria-pressed', String(item === button))); if (motion.matches) { mix = targetMix; draw(); } }));
   hero.addEventListener('click', (event) => { if (motion.matches || event.target.closest('button, a')) return; const rect = network.getBoundingClientRect(), x = event.clientX - rect.left, y = event.clientY - rect.top; if (x < 0 || x > width || y < 0 || y > height) return; ripples.push({ x, y, age: 0 }); if (ripples.length > 4) ripples.shift(); });

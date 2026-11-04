@@ -1,6 +1,6 @@
 # NeonX Studio
 
-NeonX Studio is an independent creative studio at the intersection of games and artificial intelligence. It explores original interactive experiences, authored worlds, systemic storytelling, and bounded AI systems.
+NeonX Studio is an independent creative studio at the intersection of games and artificial intelligence. It explores original interactive experiences, authored worlds, systemic storytelling, and bounded AI systems. The studio slogan is "Shape the Future of AI and Games."
 
 - Home: https://neonx.top/
 - About: https://neonx.top/about.html
