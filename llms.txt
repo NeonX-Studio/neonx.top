@@ -17,6 +17,8 @@ NeonX Studio is an independent creative studio at the intersection of games and 
 - The project uses a bounded AI reasoning layer for context-aware dialogue, tasks, and event proposals while gameplay rules, permissions, world state, and persistence remain authoritative.
 - Publicly stated technology direction: Unreal Engine 5.8.3 and C++.
 - The Light source repository, production assets, internal data, prompts, and development tools remain private.
+- **Minecraft Technology & Civilization** is a family of independent NeoForge mods for Minecraft.
+- Repository: https://github.com/NeonX-Studio/minecraft-technology-and-civilization
 
 ## Editorial boundaries
 
