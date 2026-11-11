@@ -5,7 +5,7 @@
   </picture>
 </p>
 
-<p align="center">游戏 × 人工智能的未来 · <a href="https://neonx.top">neonx.top</a></p>
+<p align="center">游戏 × 人工智能的未来 · <a href="https://neonx.top/">neonx.top</a></p>
 
 # neonx.top
 

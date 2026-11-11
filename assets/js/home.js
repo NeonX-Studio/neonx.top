@@ -96,7 +96,6 @@
   document.addEventListener('visibilitychange', () => { resetPointer(); updateAnimation(); });
   network.addEventListener('pointercancel', resetPointer);
   window.addEventListener('resize', resize);
-  window.addEventListener('neonx:route', (event) => { inView = event.detail.current === 'home'; resetPointer(); if (inView) resize(); updateAnimation(); });
   motion.addEventListener('change', updateAnimation);
   if ('IntersectionObserver' in window) new IntersectionObserver((entries) => { inView = entries[0].isIntersecting; if (!inView) resetPointer(); updateAnimation(); }).observe(network);
   controls.hidden = false; resize(); updateAnimation();
